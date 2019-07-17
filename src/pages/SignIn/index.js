@@ -39,10 +39,12 @@ export default function SignIn({ navigation }) {
             placeholder="Digite sua senha"
             ref={passwordRef}
             returnKeyType="send"
-            onSubmitEditing={handleSubmit}
+            onSubmitEditing={() => {}}
           />
 
-          <SubmitButton onPress={() => {}}>Fazer login</SubmitButton>
+          <SubmitButton onPress={() => navigation.navigate('App')}>
+            Fazer login
+          </SubmitButton>
         </Form>
 
         <SignLink onPress={() => navigation.navigate('SignUp')}>

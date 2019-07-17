@@ -52,7 +52,7 @@ export default function SignUp({ navigation }) {
             onSubmitEditing={handleSubmit}
           />
 
-          <SubmitButton onPress={handleSubmit}>Fazer login</SubmitButton>
+          <SubmitButton onPress={handleSubmit}>Criar conta</SubmitButton>
         </Form>
 
         <SignLink onPress={() => navigation.navigate('SignIn')}>
