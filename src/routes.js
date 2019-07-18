@@ -9,6 +9,7 @@ import Choose from './pages/Choose';
 import NewCustomer from './pages/NewCustomer';
 import NewPartner from './pages/NewPartner';
 
+import Profile from './pages/Profile';
 import Products from './pages/Products';
 import Orders from './pages/Orders';
 import Groups from './pages/Groups';
@@ -27,6 +28,7 @@ export default createAppContainer(
           Products,
           Orders,
           Groups,
+          Profile,
         },
         {
           tabBarOptions: {

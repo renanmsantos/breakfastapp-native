@@ -1,23 +1,23 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { Container, Title } from './styles';
-
 import Background from '~/components/Background';
 
-export default function Orders() {
+import { Container, Title } from './styles';
+
+export default function Profile() {
   return (
     <Background>
       <Container>
-        <Title>Meus pedidos</Title>
+        <Title>Perfil</Title>
       </Container>
     </Background>
   );
 }
 
-Orders.navigationOptions = {
-  tabBarLabel: 'Meus pedidos',
+Profile.navigationOptions = {
+  tabBarLabel: 'Perfil',
   tabBarIcon: ({ tintColor }) => (
-    <Icon name="playlist-add-check" size={20} color={tintColor} />
+    <Icon name="account-box" size={20} color={tintColor} />
   ),
 };

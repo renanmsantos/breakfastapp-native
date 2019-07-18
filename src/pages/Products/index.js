@@ -2,6 +2,7 @@ import React from 'react';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+import AddressHeader from '~/components/AddressHeader';
 import Background from '~/components/Background';
 import Product from '~/components/Product';
 
@@ -14,6 +15,7 @@ export default function Products() {
     <Background>
       <Container>
         <Title>Produtos</Title>
+        <AddressHeader />
         <Form>
           <FormInput
             icon="search"

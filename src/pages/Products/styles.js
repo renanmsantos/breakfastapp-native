@@ -11,7 +11,8 @@ export const Title = styled.Text`
   color: #fff;
   font-weight: bold;
   align-self: center;
-  margin-top: 30px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 `;
 
 export const Form = styled.View`
@@ -21,12 +22,13 @@ export const Form = styled.View`
 `;
 
 export const FormInput = styled(Input)`
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  margin: 10px;
 `;
 
 export const List = styled.FlatList.attrs({
   contentContainerStyle: {
-    padding: 30,
+    padding: 10,
   },
   showsVerticalScrollIndicator: false,
 })``;

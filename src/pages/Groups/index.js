@@ -1,13 +1,29 @@
 import React from 'react';
-
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Background from '~/components/Background';
 
-// import { Container } from './styles';
+import {
+  Container,
+  Title,
+  UsernameText,
+  WithoutGroupText,
+  SubmitButton,
+} from './styles';
 
 export default function Groups() {
-  return <Background />;
+  return (
+    <Background>
+      <Container>
+        <Title>Grupos</Title>
+        <UsernameText>Olá, Renan Moreira Santos.</UsernameText>
+        <WithoutGroupText>
+          Você ainda não possui ou participa de um grupo. Desejar criar um?
+        </WithoutGroupText>
+        <SubmitButton onPress={() => {}}>Criar novo grupo</SubmitButton>
+      </Container>
+    </Background>
+  );
 }
 
 Groups.navigationOptions = {
