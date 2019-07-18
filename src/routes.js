@@ -5,7 +5,9 @@ import {
 } from 'react-navigation';
 
 import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
+import Choose from './pages/Choose';
+import NewCustomer from './pages/NewCustomer';
+import NewPartner from './pages/NewPartner';
 
 import Products from './pages/Products';
 import Orders from './pages/Orders';
@@ -16,7 +18,9 @@ export default createAppContainer(
     {
       Sign: createSwitchNavigator({
         SignIn,
-        SignUp,
+        Choose,
+        NewCustomer,
+        NewPartner,
       }),
       App: createBottomTabNavigator(
         {

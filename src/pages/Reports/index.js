@@ -13,6 +13,6 @@ export default function Reports() {
 Reports.navigationOptions = {
   tabBarLabel: 'Relatórios',
   tabBarIcon: ({ tintColor }) => (
-    <Icon name="event-note" size={20} color={tintColor} />
+    <Icon name="description" size={20} color={tintColor} />
   ),
 };

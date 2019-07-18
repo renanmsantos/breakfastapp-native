@@ -16,8 +16,6 @@ import {
 export default function SignIn({ navigation }) {
   const passwordRef = useRef();
 
-  function handleSubmit() {}
-
   return (
     <Background>
       <Container>
@@ -47,7 +45,7 @@ export default function SignIn({ navigation }) {
           </SubmitButton>
         </Form>
 
-        <SignLink onPress={() => navigation.navigate('SignUp')}>
+        <SignLink onPress={() => navigation.navigate('Choose')}>
           <SignLinkText>Criar nova conta</SignLinkText>
         </SignLink>
       </Container>
