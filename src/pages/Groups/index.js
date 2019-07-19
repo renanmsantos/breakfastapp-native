@@ -11,7 +11,7 @@ import {
   SubmitButton,
 } from './styles';
 
-export default function Groups() {
+export default function Groups({ navigation }) {
   return (
     <Background>
       <Container>
@@ -20,7 +20,9 @@ export default function Groups() {
         <WithoutGroupText>
           Você ainda não possui ou participa de um grupo. Desejar criar um?
         </WithoutGroupText>
-        <SubmitButton onPress={() => {}}>Criar novo grupo</SubmitButton>
+        <SubmitButton onPress={() => navigation.navigate('NewGroup')}>
+          Criar novo grupo
+        </SubmitButton>
       </Container>
     </Background>
   );

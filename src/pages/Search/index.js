@@ -5,16 +5,17 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import AddressHeader from '~/components/AddressHeader';
 import Background from '~/components/Background';
 import Product from '~/components/Product';
+import HeaderCart from '~/components/HeaderCart';
 
-import { Container, Form, FormInput, Title, List } from './styles';
+import { Container, Form, FormInput, List } from './styles';
 
 const data = [1, 2, 3, 4, 5];
 
-export default function Products() {
+export default function Search() {
   return (
     <Background>
       <Container>
-        <Title>Produtos</Title>
+        <HeaderCart />
         <AddressHeader />
         <Form>
           <FormInput
@@ -34,9 +35,9 @@ export default function Products() {
   );
 }
 
-Products.navigationOptions = {
-  tabBarLabel: 'Produtos',
+Search.navigationOptions = {
+  tabBarLabel: 'Busca',
   tabBarIcon: ({ tintColor }) => (
-    <Icon name="free-breakfast" size={20} color={tintColor} />
+    <Icon name="search" size={20} color={tintColor} />
   ),
 };
