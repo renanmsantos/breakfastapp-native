@@ -13,8 +13,7 @@ export const Form = styled.View`
 `;
 
 export const FormInput = styled(Input)`
-  margin-bottom: 5px;
-  margin: 10px;
+  margin: 5px;
 `;
 
 export const List = styled.FlatList.attrs({

@@ -7,11 +7,12 @@ export const Container = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  background: #ff5f49;
 `;
 
 export const Name = styled.Text`
   font-weight: bold;
-  font-size: 15px;
+  font-size: 18px;
   color: #fff;
 `;
 

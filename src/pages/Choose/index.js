@@ -21,10 +21,10 @@ export default function Choose({ navigation }) {
         <Image source={logo} />
         <ChooseText>O que deseja fazer no nosso App?</ChooseText>
         <Form>
-          <ChooseButton onPress={() => navigation.navigate('NewCustomer')}>
+          <ChooseButton onPress={() => navigation.navigate('FormCustomer')}>
             Quero organizar meu café
           </ChooseButton>
-          <ChooseButton onPress={() => navigation.navigate('NewPartner')}>
+          <ChooseButton onPress={() => navigation.navigate('FormPartner')}>
             Quero vender meus produtos
           </ChooseButton>
         </Form>

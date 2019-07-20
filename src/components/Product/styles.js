@@ -4,7 +4,7 @@ export const Container = styled.View`
   margin-bottom: 15px;
   padding: 15px;
   border-radius: 10px;
-  background: #fff;
+  background: rgba(255,255,255,0.5);
 
   display: flex;
   flex-direction: row;
@@ -35,7 +35,7 @@ export const Name = styled.Text`
 `;
 
 export const Partner = styled.Text`
-  color: #999;
+  color: #333;
 `;
 
 export const Price = styled.Text`

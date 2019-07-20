@@ -5,7 +5,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import { Container, Left, Info, Name } from './styles';
 
-export default function HeaderCart() {
+export default function HeaderCart({ navigation }) {
   return (
     <Container>
       <Left>
@@ -13,10 +13,10 @@ export default function HeaderCart() {
           <Name>Olá, Renan Moreira Santos</Name>
         </Info>
       </Left>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
         <Icon name="shopping-cart" size={30} color="#fff" />
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Sign')}>
         <Icon name="power-settings-new" size={30} color="#fff" />
       </TouchableOpacity>
     </Container>

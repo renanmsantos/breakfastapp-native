@@ -12,7 +12,7 @@ import {
   LinkText,
 } from './styles';
 
-export default function NewPartner({ navigation }) {
+export default function FormPartner({ navigation }) {
   const sobrenomeRef = useRef();
   const emailRef = useRef();
   const cnpjRef = useRef();
