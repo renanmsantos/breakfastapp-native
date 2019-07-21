@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Container, FormInput, SubmitButton } from './styles';
 
-export default function ListNewInvites() {
+export default function NewInvite() {
   return (
     <Container>
       <FormInput
@@ -15,7 +15,6 @@ export default function ListNewInvites() {
       />
 
       <SubmitButton>Convidar amigo</SubmitButton>
-
     </Container>
   );
 }

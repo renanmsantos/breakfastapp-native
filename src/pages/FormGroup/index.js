@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 
 import Background from '~/components/Background';
-import ListNewInvites from '~/components/ListNewInvites';
+import NewInvite from '~/components/NewInvite';
 import Subtitle from '~/components/Subtitle';
 
 import {
@@ -32,7 +32,7 @@ export default function FormGroup({ navigation }) {
             onSubmitEditing={() => nomeEmpresaRef.current.focus()}
           />
           <FormInput
-            icon="description"
+            icon="business"
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="Digite o nome da empresa"
@@ -42,7 +42,7 @@ export default function FormGroup({ navigation }) {
           />
 
           <Subtitle>Convidar amigos</Subtitle>
-          <ListNewInvites/>
+          <NewInvite />
 
           <SubmitButton onPress={() => {}}>Criar</SubmitButton>
         </Form>

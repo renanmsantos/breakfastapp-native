@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Background from '~/components/Background';
-import ListNewInvites from '~/components/ListNewInvites';
+import NewInvite from '~/components/NewInvite';
 import Invite from '~/components/Invite';
 import Subtitle from '~/components/Subtitle';
 
@@ -15,7 +15,7 @@ import {
   SubmitButton,
   WithoutGroup,
   GroupAdmin,
-  List
+  List,
 } from './styles';
 
 const data = [1, 2, 3, 4, 5];
@@ -29,51 +29,46 @@ export default function Groups({ navigation }) {
       <Container>
         <Title>Grupos</Title>
 
-        {
-          !isAdmin ? (
-            !hasGroup ? (
-              <WithoutGroup>
-                <DescriptionText>
-                  Você ainda não possui ou participa de um grupo. Desejar criar um?
-                </DescriptionText>
-                <SubmitButton onPress={() => navigation.navigate('FormGroup')}>
-                  Criar novo grupo
-                </SubmitButton>
-              </WithoutGroup>
-            ) : (
-              <WithoutGroup>
-                <DescriptionText>
-                  Você está no grupo: XXXX.
-                </DescriptionText>
-                <SubmitButton onPress={() => {}}>
-                  Sair do grupo
-                </SubmitButton>
-              </WithoutGroup>
-            )
+        {!isAdmin ? (
+          !hasGroup ? (
+            <WithoutGroup>
+              <DescriptionText>
+                Você ainda não possui ou participa de um grupo. Desejar criar
+                um?
+              </DescriptionText>
+              <SubmitButton onPress={() => navigation.navigate('FormGroup')}>
+                Criar novo grupo
+              </SubmitButton>
+            </WithoutGroup>
           ) : (
+            <WithoutGroup>
+              <DescriptionText>Você está no grupo: XXXX.</DescriptionText>
+              <SubmitButton onPress={() => {}}>Sair do grupo</SubmitButton>
+            </WithoutGroup>
+          )
+        ) : (
           <GroupAdmin>
-            <DescriptionText>
-              Você é o administrador do grupo.
-            </DescriptionText>
+            <DescriptionText>Você é o administrador do grupo.</DescriptionText>
 
             <Form>
               <FormInput
                 icon="description"
                 autoCorrect={false}
                 autoCapitalize="none"
-                placeholder="Digite o nome do grupo"
+                value="Grupo dos amigos"
                 returnKeyType="next"
                 onSubmitEditing={() => nomeEmpresaRef.current.focus()}
               />
               <FormInput
-                icon="description"
+                icon="business"
                 autoCorrect={false}
                 autoCapitalize="none"
-                placeholder="Digite o nome da empresa"
+                value="GFT Enterprise"
                 returnKeyType="next"
                 ref={nomeEmpresaRef}
                 onSubmitEditing={() => {}}
               />
+              <SubmitButton onPress={() => {}}>Editar</SubmitButton>
             </Form>
 
             <Subtitle>Últimos convites</Subtitle>
@@ -84,15 +79,9 @@ export default function Groups({ navigation }) {
             />
 
             <Subtitle>Novos convites</Subtitle>
-            <ListNewInvites/>
-
-            <SubmitButton onPress={() => {}}>
-              Salvar
-            </SubmitButton>
-
+            <NewInvite />
           </GroupAdmin>
         )}
-
       </Container>
     </Background>
   );

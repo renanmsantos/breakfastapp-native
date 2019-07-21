@@ -2,7 +2,7 @@ import {
   createAppContainer,
   createSwitchNavigator,
   createBottomTabNavigator,
-  createStackNavigator
+  createStackNavigator,
 } from 'react-navigation';
 
 import SignIn from './pages/SignIn';
@@ -10,6 +10,7 @@ import Choose from './pages/Choose';
 import FormCustomer from './pages/FormCustomer';
 import FormPartner from './pages/FormPartner';
 import FormGroup from './pages/FormGroup';
+import FormAddress from './pages/FormAddress';
 
 import Profile from './pages/Profile';
 import Search from './pages/Search';
@@ -24,26 +25,30 @@ import IndividualPayment from './pages/Payment/IndividualPayment';
 export default createAppContainer(
   createSwitchNavigator(
     {
-      Payment: createStackNavigator({
-        Cart,
-        ChoosePayment,
-        GroupPayment,
-        IndividualPayment
-      },{
-        defaultNavigationOptions: {
-          headerLayoutPreset: 'center',
-          headerTitleStyle: {
-            fontSize: 20,
-            fontWeight: 'bold'
+      Payment: createStackNavigator(
+        {
+          Cart,
+          ChoosePayment,
+          GroupPayment,
+          IndividualPayment,
+        },
+        {
+          defaultNavigationOptions: {
+            headerLayoutPreset: 'center',
+            headerTitleStyle: {
+              fontSize: 20,
+              fontWeight: 'bold',
+            },
+            headerTransparent: true,
+            headerTintColor: '#fff',
+            headerLeftContainerStyle: {
+              marginLeft: 20,
+            },
           },
-          headerTransparent: true,
-          headerTintColor: '#fff',
-          headerLeftContainerStyle: {
-            marginLeft: 20
-          }
         }
-      }),
+      ),
       FormGroup,
+      FormAddress: { screen: FormAddress },
       Sign: createSwitchNavigator({
         SignIn,
         Choose,
