@@ -14,7 +14,7 @@ import {
 import logo from '~/assets/logo.png';
 import Background from '~/components/Background';
 
-export default function Choose({ navigation }) {
+export default function ChooseUser({ navigation }) {
   return (
     <Background>
       <Container>

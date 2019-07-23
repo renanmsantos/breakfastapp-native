@@ -3,9 +3,9 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-import { Container, Left, AddressText } from './styles';
+import { Container, Left, AddressText, Link, LinkText } from './styles';
 
-export default function Address() {
+export default function Address({ navigation }) {
   return (
     <Container>
       <Left>

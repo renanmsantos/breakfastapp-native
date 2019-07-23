@@ -12,45 +12,54 @@ import {
   LinkText,
 } from './styles';
 
-export default function FormPartner({ navigation }) {
+export default function FormCustomer({ navigation }) {
   const sobrenomeRef = useRef();
   const emailRef = useRef();
-  const cnpjRef = useRef();
+  const cpfRef = useRef();
   const celularRef = useRef();
   const passwordRef = useRef();
 
   return (
     <Background>
       <Container>
-        <Title>Novo parceiro</Title>
+        <Title>Novo usuário</Title>
 
         <Form>
           <FormInput
-            icon="business"
+            icon="person-outline"
             autoCorrect={false}
             autoCapitalize="none"
-            placeholder="Digite o nome da empresa"
+            placeholder="Digite seu nome"
             returnKeyType="next"
             onSubmitEditing={() => sobrenomeRef.current.focus()}
+          />
+          <FormInput
+            icon="person-outline"
+            autoCorrect={false}
+            autoCapitalize="none"
+            placeholder="Digite seu sobrenome"
+            returnKeyType="next"
+            ref={sobrenomeRef}
+            onSubmitEditing={() => celularRef.current.focus()}
           />
           <FormInput
             icon="phone-android"
             autoCorrect={false}
             autoCapitalize="none"
             keyboardType="phone-pad"
-            placeholder="Digite o telefone de contato"
+            placeholder="Digite seu celular"
             returnKeyType="next"
             ref={celularRef}
-            onSubmitEditing={() => cnpjRef.current.focus()}
+            onSubmitEditing={() => cpfRef.current.focus()}
           />
           <FormInput
             icon="account-box"
             autoCorrect={false}
             autoCapitalize="none"
             keyboardType="numeric"
-            placeholder="Digite seu CNPJ"
+            placeholder="Digite seu CPF"
             returnKeyType="next"
-            ref={cnpjRef}
+            ref={cpfRef}
             onSubmitEditing={() => emailRef.current.focus()}
           />
           <FormInput
@@ -74,7 +83,7 @@ export default function FormPartner({ navigation }) {
 
           <SubmitButton onPress={() => {}}>Salvar</SubmitButton>
         </Form>
-        <Link onPress={() => navigation.navigate('Choose')}>
+        <Link onPress={() => navigation.navigate('ChooseUser')}>
           <LinkText>Voltar</LinkText>
         </Link>
       </Container>

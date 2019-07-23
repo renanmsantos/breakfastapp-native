@@ -1,13 +1,11 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-  margin-bottom: 2px;
-  padding: 10px;
-  border-radius: 5px;
+  height: 56px;
   background: rgba(255, 255, 255, 0.3);
-
-  display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
 `;
 
 export const Left = styled.View`
@@ -16,17 +14,15 @@ export const Left = styled.View`
   align-items: center;
 `;
 
-export const AddressText = styled.Text`
-  font-size: 14px;
+export const TotalText = styled.Text`
   color: #333;
+  font-size: 18px;
+  padding-right: 10px;
 `;
 
-export const Link = styled.TouchableOpacity`
-  margin-top: 20px;
-`;
-
-export const LinkText = styled.Text`
-  color: #fff;
+export const TotalPriceText = styled.Text`
+  color: #333;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 20px;
+  padding-right: 10px;
 `;

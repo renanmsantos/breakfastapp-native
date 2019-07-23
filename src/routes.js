@@ -6,11 +6,10 @@ import {
 } from 'react-navigation';
 
 import SignIn from './pages/SignIn';
-import Choose from './pages/Choose';
-import FormCustomer from './pages/FormCustomer';
-import FormPartner from './pages/FormPartner';
-import FormGroup from './pages/FormGroup';
-import FormAddress from './pages/FormAddress';
+
+import ChooseUser from './pages/Chooses/ChooseUser';
+import ChoosePayment from './pages/Chooses/ChoosePayment';
+import ChooseAddress from './pages/Chooses/ChooseAddress';
 
 import Profile from './pages/Profile';
 import Search from './pages/Search';
@@ -18,42 +17,43 @@ import Orders from './pages/Orders';
 import Groups from './pages/Groups';
 
 import Cart from './pages/Payment/Cart';
-import ChoosePayment from './pages/Payment/ChoosePayment';
 import GroupPayment from './pages/Payment/GroupPayment';
 import IndividualPayment from './pages/Payment/IndividualPayment';
+
+import FormCustomer from './pages/Forms/FormCustomer';
+import FormPartner from './pages/Forms/FormPartner';
+import FormGroup from './pages/Forms/FormGroup';
+import FormAddress from './pages/Forms/FormAddress';
 
 export default createAppContainer(
   createSwitchNavigator(
     {
       Payment: createStackNavigator(
         {
-          Cart,
-          ChoosePayment,
-          GroupPayment,
-          IndividualPayment,
+          Cart: { screen: Cart },
+          ChoosePayment: { screen: ChoosePayment },
+          GroupPayment: { screen: GroupPayment },
+          IndividualPayment: { screen: IndividualPayment },
         },
         {
           defaultNavigationOptions: {
-            headerLayoutPreset: 'center',
             headerTitleStyle: {
               fontSize: 20,
               fontWeight: 'bold',
             },
             headerTransparent: true,
             headerTintColor: '#fff',
-            headerLeftContainerStyle: {
-              marginLeft: 20,
-            },
           },
         }
       ),
-      FormGroup,
+      FormGroup: { screen: FormGroup },
       FormAddress: { screen: FormAddress },
+      ChooseAddress: { screen: ChooseAddress },
       Sign: createSwitchNavigator({
-        SignIn,
-        Choose,
-        FormCustomer,
-        FormPartner,
+        SignIn: { screen: SignIn },
+        ChooseUser: { screen: ChooseUser },
+        FormCustomer: { screen: FormCustomer },
+        FormPartner: { screen: FormPartner },
       }),
       App: createBottomTabNavigator(
         {

@@ -36,7 +36,7 @@ export default function FormAddress({ navigation }) {
           <FormInput
             autoCorrect={false}
             autoCapitalize="none"
-            placeholder="Digite o endereço"
+            placeholder="Endereço"
             returnKeyType="next"
             ref={streetRef}
             onSubmitEditing={() => numberRef.current.focus()}
@@ -45,7 +45,7 @@ export default function FormAddress({ navigation }) {
             autoCorrect={false}
             autoCapitalize="none"
             keyboardType="phone-pad"
-            placeholder="Digite o número"
+            placeholder="Número"
             returnKeyType="next"
             ref={numberRef}
             onSubmitEditing={() => districtRef.current.focus()}
@@ -54,7 +54,7 @@ export default function FormAddress({ navigation }) {
             autoCorrect={false}
             autoCapitalize="none"
             keyboardType="numeric"
-            placeholder="Digite o bairro"
+            placeholder="Bairro"
             returnKeyType="next"
             ref={districtRef}
             onSubmitEditing={() => cityRef.current.focus()}
@@ -63,7 +63,7 @@ export default function FormAddress({ navigation }) {
             autoCorrect={false}
             autoCapitalize="none"
             keyboardType="numeric"
-            placeholder="Digite o cidade"
+            placeholder="Cidade"
             returnKeyType="next"
             ref={cityRef}
             onSubmitEditing={() => stateRef.current.focus()}
@@ -72,7 +72,7 @@ export default function FormAddress({ navigation }) {
             autoCorrect={false}
             autoCapitalize="none"
             keyboardType="numeric"
-            placeholder="Digite o estado"
+            placeholder="Estado"
             returnKeyType="next"
             ref={stateRef}
           />

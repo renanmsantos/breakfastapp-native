@@ -45,7 +45,7 @@ export default function SignIn({ navigation }) {
           </SubmitButton>
         </Form>
 
-        <SignLink onPress={() => navigation.navigate('Choose')}>
+        <SignLink onPress={() => navigation.navigate('ChooseUser')}>
           <SignLinkText>Criar nova conta</SignLinkText>
         </SignLink>
       </Container>

@@ -4,12 +4,14 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Container, Left, Image, Info, Name, Partner, Price } from './styles';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-export default function ListProducts({ navigation }) {
+export default function Product({ navigation }) {
   return (
     <Container>
       <Left>
         <Image
-          source={{ uri: 'https://api.adorable.io/avatars/50/'+ Math.random() +'.png' }}
+          source={{
+            uri: 'https://api.adorable.io/avatars/50/' + Math.random() + '.png',
+          }}
         />
         <Info>
           <Name>Produto 1</Name>
