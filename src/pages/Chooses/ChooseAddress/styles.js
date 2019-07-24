@@ -10,24 +10,28 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   padding: 0 30px;
 `;
 
+export const Form = styled.View`
+  align-self: stretch;
+  margin-top: 50px;
+`;
+
 export const Title = styled.Text`
-  font-size: 20px;
+  margin-top: 50px;
+  padding-bottom: 20px;
   color: #fff;
   font-weight: bold;
-  align-self: center;
-  margin-top: 30px;
-  margin-bottom: 20px;
+  font-size: 18px;
 `;
 
 export const List = styled.FlatList.attrs({
   showsVerticalScrollIndicator: false,
 })``;
 
-export const Link = styled.TouchableOpacity`
+export const SignLink = styled.TouchableOpacity`
   margin-top: 20px;
 `;
 
-export const LinkText = styled.Text`
+export const SignLinkText = styled.Text`
   color: #fff;
   font-weight: bold;
   font-size: 16px;

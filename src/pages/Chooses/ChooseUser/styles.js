@@ -20,7 +20,6 @@ export const Form = styled.View`
 export const ChooseText = styled.Text`
   margin-top: 50px;
   color: #fff;
-  font-weight: bold;
   font-size: 18px;
 `;
 

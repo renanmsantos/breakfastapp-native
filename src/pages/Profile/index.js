@@ -110,7 +110,7 @@ export default function Profile({ navigation }) {
         <List
           data={data}
           keyExtractor={item => String(item)}
-          renderItem={({ item }) => <Address data={item} />}
+          renderItem={({ item }) => <Address data={item} type={'edit'} />}
         />
         <NewButton onPress={() => navigation.navigate('FormAddress')}>
           Novo endereço

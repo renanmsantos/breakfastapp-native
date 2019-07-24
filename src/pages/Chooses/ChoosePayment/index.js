@@ -13,11 +13,11 @@ export default function ChoosePayment({ navigation }) {
       <Container>
         <CardPayment onPress={() => navigation.navigate('IndividualPayment')}>
           <Icon name="person" size={90} color="#333" />
-          <ContentText>Individual</ContentText>
+          <ContentText>Eu quero pagar tudo</ContentText>
         </CardPayment>
         <CardPayment onPress={() => navigation.navigate('GroupPayment')}>
           <Icon name="group" size={90} color="#333" />
-          <ContentText>Grupo</ContentText>
+          <ContentText>Dividir com meu grupo</ContentText>
         </CardPayment>
       </Container>
     </Background>
