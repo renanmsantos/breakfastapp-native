@@ -18,7 +18,7 @@ export default function Orders({ navigation }) {
             icon="search"
             autoCorrect={false}
             autoCapitalize="none"
-            placeholder="Procure seu pedido aqui."
+            placeholder="Procure seu pedido aqui..."
           />
         </Form>
         <List

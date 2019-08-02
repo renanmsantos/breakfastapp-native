@@ -5,12 +5,12 @@ import { TouchableOpacity } from 'react-native';
 
 import Background from '~/components/Background';
 
-export default function GroupPayment() {
+export default function Payment() {
   return <Background />;
 }
 
-GroupPayment.navigationOptions = ({ navigation }) => ({
-  title: 'Pagamento em grupo',
+Payment.navigationOptions = ({ navigation }) => ({
+  title: 'Pagamento',
   headerLeft: () => (
     <TouchableOpacity onPress={() => navigation.goBack()}>
       <Icon name="chevron-left" size={20} color="#fff" />

@@ -21,7 +21,7 @@ export default function Cart({ navigation }) {
           renderItem={({ item }) => <CartProduct data={item} />}
         />
       </Container>
-      <SubmitButton onPress={() => navigation.navigate('ChoosePayment')}>
+      <SubmitButton onPress={() => navigation.navigate('Payment')}>
         Comprar
       </SubmitButton>
       <FooterCart />

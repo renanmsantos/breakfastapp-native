@@ -33,6 +33,12 @@ export const Description = styled.Text`
   color: #333;
 `;
 
+export const Status = styled.Text`
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+`;
+
 export const Price = styled.Text`
   margin-top: 5px;
   font-size: 14px;

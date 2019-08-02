@@ -7,22 +7,18 @@ import {
 
 import SignIn from './pages/SignIn';
 
-import ChooseUser from './pages/Chooses/ChooseUser';
-import ChoosePayment from './pages/Chooses/ChoosePayment';
-import ChooseAddress from './pages/Chooses/ChooseAddress';
+import ChooseAddress from './pages/ChooseAddress';
+
+import Rate from './pages/Rate';
 
 import Profile from './pages/Profile';
 import Search from './pages/Search';
 import Orders from './pages/Orders';
-import Groups from './pages/Groups';
 
 import Cart from './pages/Payment/Cart';
-import GroupPayment from './pages/Payment/GroupPayment';
-import IndividualPayment from './pages/Payment/IndividualPayment';
+import Payment from './pages/Payment/Payment';
 
 import FormCustomer from './pages/Forms/FormCustomer';
-import FormPartner from './pages/Forms/FormPartner';
-import FormGroup from './pages/Forms/FormGroup';
 import FormAddress from './pages/Forms/FormAddress';
 
 export default createAppContainer(
@@ -31,35 +27,35 @@ export default createAppContainer(
       Payment: createStackNavigator(
         {
           Cart: { screen: Cart },
-          ChoosePayment: { screen: ChoosePayment },
-          GroupPayment: { screen: GroupPayment },
-          IndividualPayment: { screen: IndividualPayment },
+          Payment: { screen: Payment },
         },
         {
           defaultNavigationOptions: {
             headerTitleStyle: {
               fontSize: 20,
               fontWeight: 'bold',
+              alignSelf: 'center',
+              textAlign: 'center',
             },
             headerTransparent: true,
             headerTintColor: '#fff',
+            headerLeftContainerStyle: {
+              paddingLeft: 30,
+            },
           },
         }
       ),
-      FormGroup: { screen: FormGroup },
       FormAddress: { screen: FormAddress },
       ChooseAddress: { screen: ChooseAddress },
+      Rate: { screen: Rate },
       Sign: createSwitchNavigator({
         SignIn: { screen: SignIn },
-        ChooseUser: { screen: ChooseUser },
         FormCustomer: { screen: FormCustomer },
-        FormPartner: { screen: FormPartner },
       }),
       App: createBottomTabNavigator(
         {
           Search: { screen: Search },
           Orders: { screen: Orders },
-          Groups: { screen: Groups },
           Profile: { screen: Profile },
         },
         {
@@ -78,7 +74,7 @@ export default createAppContainer(
       ),
     },
     {
-      initialRouteName: 'App',
+      initialRouteName: 'Sign',
     }
   )
 );

@@ -6,6 +6,7 @@ import {
   Info,
   OrderId,
   Description,
+  Status,
   Price,
   Test,
 } from './styles';
@@ -18,13 +19,14 @@ export default function Order({ navigation }) {
         <Info>
           <OrderId>PEDIDO #12313</OrderId>
           <Description>Summary description</Description>
+          <Status>Em andamento</Status>
           <Price>R$ 23,50</Price>
         </Info>
       </Left>
-      <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Rate')}>
         <Test>Avaliar</Test>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Order')}>
         <Test>Cancelar</Test>
       </TouchableOpacity>
     </Container>

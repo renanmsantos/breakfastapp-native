@@ -83,7 +83,7 @@ export default function FormCustomer({ navigation }) {
 
           <SubmitButton onPress={() => {}}>Salvar</SubmitButton>
         </Form>
-        <Link onPress={() => navigation.navigate('ChooseUser')}>
+        <Link onPress={() => navigation.navigate('SignIn')}>
           <LinkText>Voltar</LinkText>
         </Link>
       </Container>
