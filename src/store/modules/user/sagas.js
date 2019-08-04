@@ -1,5 +1,4 @@
 import { all, put, takeLatest, call } from 'redux-saga/effects';
-
 import { Alert } from 'react-native';
 
 import api from '~/services/api';
@@ -8,7 +7,6 @@ import {
   updateUserSuccess,
   removeAddressSuccess,
   addAddressSuccess,
-  s,
 } from './actions';
 
 export function* createUser({ payload }) {
@@ -53,8 +51,7 @@ export function* removeAddressUser({ payload }) {
       api.delete,
       'customers/' + userId + '/address/' + addressId
     );
-
-    yield put(removeAddressSuccess(response.addresses));
+    yield put(removeAddressSuccess(response.data.addresses));
   } catch (err) {
     Alert.alert(
       'Falha na removação',
@@ -76,8 +73,8 @@ export function* addAddressUser({ payload }) {
       city,
       state,
     });
-
-    yield put(addAddressSuccess(response.addresses));
+    Alert.alert('Sucesso!', 'O endereço foi salvo com sucesso.');
+    yield put(addAddressSuccess(response.data.addresses));
   } catch (err) {
     Alert.alert('Falha no cadastro', 'Houve um erro no cadastro do endereço.');
   }

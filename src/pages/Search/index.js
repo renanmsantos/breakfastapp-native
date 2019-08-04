@@ -7,16 +7,24 @@ import Product from '~/components/Product';
 import HeaderCart from '~/components/HeaderCart';
 import HeaderAddress from '~/components/HeaderAddress';
 
+import { useSelector } from 'react-redux';
+
 import { Container, Form, FormInput, List } from './styles';
 
 const data = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function Search({ navigation }) {
+  const addresses = useSelector(state => state.user.addresses);
+  let address = [];
+  if (addresses.length > 0) {
+    address = addresses[0];
+  }
+
   return (
     <Background>
       <Container>
         <HeaderCart navigation={navigation} />
-        <HeaderAddress navigation={navigation} />
+        <HeaderAddress navigation={navigation} address={address} />
         <Form>
           <FormInput
             icon="search"
