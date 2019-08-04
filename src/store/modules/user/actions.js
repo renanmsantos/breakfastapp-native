@@ -4,7 +4,8 @@ export function createUserRequest(
   email,
   password,
   cpf,
-  cellphone
+  cellphone,
+  addresses
 ) {
   return {
     type: '@user/CREATE_USER_REQUEST',
@@ -15,11 +16,55 @@ export function createUserRequest(
       cellphone,
       email,
       password,
+      addresses,
     },
   };
 }
 
-export function updateUserRequest(id, name, lastName, password, cellphone) {
+export function removeAddressRequest(userId, addressId) {
+  return {
+    type: '@user/REMOVE_ADDRESS_REQUEST',
+    payload: { userId, addressId },
+  };
+}
+
+export function removeAddressSuccess(addresses) {
+  return {
+    type: '@user/REMOVE_ADDRESS_SUCCESS',
+    payload: { addresses },
+  };
+}
+
+export function addAddressRequest(
+  userId,
+  cep,
+  street,
+  number,
+  district,
+  city,
+  state
+) {
+  return {
+    type: '@user/ADD_ADDRESS_REQUEST',
+    payload: { userId, cep, street, number, district, city, state },
+  };
+}
+
+export function addAddressSuccess(addresses) {
+  return {
+    type: '@user/ADD_ADDRESS_SUCCESS',
+    payload: { addresses },
+  };
+}
+
+export function updateUserRequest(
+  id,
+  name,
+  lastName,
+  password,
+  cellphone,
+  addresses
+) {
   return {
     type: '@user/UPDATE_USER_REQUEST',
     payload: {
@@ -28,6 +73,7 @@ export function updateUserRequest(id, name, lastName, password, cellphone) {
       lastName,
       cellphone,
       password,
+      addresses,
     },
   };
 }

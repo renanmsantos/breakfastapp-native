@@ -1,6 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
 
 import Background from '~/components/Background';
+
+import { addAddressRequest } from '~/store/modules/user/actions';
 
 import {
   Container,
@@ -13,11 +17,27 @@ import {
 } from './styles';
 
 export default function FormAddress({ navigation }) {
+  const dispatch = useDispatch();
+  const userId = useSelector(state => state.user.id);
+
   const streetRef = useRef();
   const numberRef = useRef();
   const districtRef = useRef();
   const cityRef = useRef();
   const stateRef = useRef();
+
+  const [cep, setCep] = useState('');
+  const [street, setStreet] = useState('');
+  const [number, setNumber] = useState('');
+  const [district, setDistrict] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+
+  function handleSubmit() {
+    dispatch(
+      addAddressRequest(userId, cep, street, number, district, city, state)
+    );
+  }
 
   return (
     <Background>
@@ -26,17 +46,20 @@ export default function FormAddress({ navigation }) {
 
         <Form>
           <FormInput
-            icon="search"
             autoCorrect={false}
             autoCapitalize="none"
-            placeholder="Tem o CEP? Vamos procurar."
+            placeholder="CEP"
+            keyboardType="phone-pad"
+            value={cep}
+            onChangeText={setCep}
             returnKeyType="next"
-            onSubmitEditing={() => streetRef.current.focus()}
           />
           <FormInput
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="Endereço"
+            value={street}
+            onChangeText={setStreet}
             returnKeyType="next"
             ref={streetRef}
             onSubmitEditing={() => numberRef.current.focus()}
@@ -44,39 +67,44 @@ export default function FormAddress({ navigation }) {
           <FormInput
             autoCorrect={false}
             autoCapitalize="none"
-            keyboardType="phone-pad"
+            keyboardType="numeric"
             placeholder="Número"
             returnKeyType="next"
+            value={number}
+            onChangeText={setNumber}
             ref={numberRef}
             onSubmitEditing={() => districtRef.current.focus()}
           />
           <FormInput
             autoCorrect={false}
             autoCapitalize="none"
-            keyboardType="numeric"
             placeholder="Bairro"
             returnKeyType="next"
+            value={district}
+            onChangeText={setDistrict}
             ref={districtRef}
             onSubmitEditing={() => cityRef.current.focus()}
           />
           <FormInput
             autoCorrect={false}
             autoCapitalize="none"
-            keyboardType="numeric"
             placeholder="Cidade"
             returnKeyType="next"
+            value={city}
+            onChangeText={setCity}
             ref={cityRef}
             onSubmitEditing={() => stateRef.current.focus()}
           />
           <FormInput
             autoCorrect={false}
             autoCapitalize="none"
-            keyboardType="numeric"
             placeholder="Estado"
+            value={state}
+            onChangeText={setState}
             returnKeyType="next"
             ref={stateRef}
           />
-          <SubmitButton onPress={() => {}}>Salvar</SubmitButton>
+          <SubmitButton onPress={handleSubmit}>Salvar</SubmitButton>
         </Form>
         <Link onPress={() => navigation.navigate('Profile')}>
           <LinkText>Voltar</LinkText>

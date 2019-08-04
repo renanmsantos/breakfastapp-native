@@ -4,7 +4,12 @@ import { Alert } from 'react-native';
 
 import api from '~/services/api';
 
-import { updateUserSuccess } from './actions';
+import {
+  updateUserSuccess,
+  removeAddressSuccess,
+  addAddressSuccess,
+  s,
+} from './actions';
 
 export function* createUser({ payload }) {
   try {
@@ -41,7 +46,46 @@ export function* updateUser({ payload }) {
   }
 }
 
+export function* removeAddressUser({ payload }) {
+  try {
+    const { userId, addressId } = payload;
+    const response = yield call(
+      api.delete,
+      'customers/' + userId + '/address/' + addressId
+    );
+
+    yield put(removeAddressSuccess(response.addresses));
+  } catch (err) {
+    Alert.alert(
+      'Falha na removação',
+      'Houve um erro ao remover este endereço.'
+    );
+  }
+}
+
+export function* addAddressUser({ payload }) {
+  try {
+    const { userId, cep, street, number, district, city, state } = payload;
+
+    const response = yield call(api.put, 'customers/' + userId + '/address', {
+      userId,
+      cep,
+      street,
+      number,
+      district,
+      city,
+      state,
+    });
+
+    yield put(addAddressSuccess(response.addresses));
+  } catch (err) {
+    Alert.alert('Falha no cadastro', 'Houve um erro no cadastro do endereço.');
+  }
+}
+
 export default all([
   takeLatest('@user/CREATE_USER_REQUEST', createUser),
   takeLatest('@user/UPDATE_USER_REQUEST', updateUser),
+  takeLatest('@user/REMOVE_ADDRESS_REQUEST', removeAddressUser),
+  takeLatest('@user/ADD_ADDRESS_REQUEST', addAddressUser),
 ]);

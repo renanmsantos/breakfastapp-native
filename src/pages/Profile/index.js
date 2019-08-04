@@ -19,11 +19,10 @@ import {
   NewButton,
 } from './styles';
 
-data = [1, 2, 3];
-
 export default function Profile({ navigation }) {
   const dispatch = useDispatch();
   const profile = useSelector(state => state.user);
+  const addresses = useSelector(state => state.user.addresses);
 
   const lastnameRef = useRef();
   const emailRef = useRef();
@@ -147,9 +146,9 @@ export default function Profile({ navigation }) {
         </Form>
         <Subtitle>Endereços</Subtitle>
         <List
-          data={data}
-          keyExtractor={item => String(item)}
-          renderItem={({ item }) => <Address data={item} type={'edit'} />}
+          data={addresses}
+          keyExtractor={item => String(item.id)}
+          renderItem={({ item }) => <Address address={item} type={'edit'} />}
         />
         <NewButton onPress={() => navigation.navigate('FormAddress')}>
           Novo endereço
