@@ -25,10 +25,6 @@ export const FormInput = styled(Input)`
   margin-bottom: 10px;
 `;
 
-export const SubmitButton = styled(Button)`
-  margin-top: 5px;
-`;
-
 export const Separator = styled.View`
   height: 2px;
   background: rgba(255, 255, 255, 0.3);

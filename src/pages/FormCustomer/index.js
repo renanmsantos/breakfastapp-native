@@ -1,6 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+
+import { useDispatch } from 'react-redux';
 
 import Background from '~/components/Background';
+
+import { createUserRequest } from '~/store/modules/user/actions';
 
 import {
   Container,
@@ -13,11 +17,26 @@ import {
 } from './styles';
 
 export default function FormCustomer({ navigation }) {
-  const sobrenomeRef = useRef();
+  const dispatch = useDispatch();
+
+  const lastNameRef = useRef();
   const emailRef = useRef();
   const cpfRef = useRef();
-  const celularRef = useRef();
+  const cellphoneRef = useRef();
   const passwordRef = useRef();
+
+  const [name, setName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [cellphone, setCellphone] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  function handleSubmit() {
+    dispatch(
+      createUserRequest(name, lastName, cellphone, cpf, email, password)
+    );
+  }
 
   return (
     <Background>
@@ -31,7 +50,9 @@ export default function FormCustomer({ navigation }) {
             autoCapitalize="none"
             placeholder="Digite seu nome"
             returnKeyType="next"
-            onSubmitEditing={() => sobrenomeRef.current.focus()}
+            value={name}
+            onChangeText={setName}
+            onSubmitEditing={() => lastNameRef.current.focus()}
           />
           <FormInput
             icon="person-outline"
@@ -39,8 +60,10 @@ export default function FormCustomer({ navigation }) {
             autoCapitalize="none"
             placeholder="Digite seu sobrenome"
             returnKeyType="next"
-            ref={sobrenomeRef}
-            onSubmitEditing={() => celularRef.current.focus()}
+            value={lastName}
+            onChangeText={setLastName}
+            ref={lastNameRef}
+            onSubmitEditing={() => cellphoneRef.current.focus()}
           />
           <FormInput
             icon="phone-android"
@@ -49,7 +72,9 @@ export default function FormCustomer({ navigation }) {
             keyboardType="phone-pad"
             placeholder="Digite seu celular"
             returnKeyType="next"
-            ref={celularRef}
+            value={cellphone}
+            onChangeText={setCellphone}
+            ref={cellphoneRef}
             onSubmitEditing={() => cpfRef.current.focus()}
           />
           <FormInput
@@ -60,6 +85,8 @@ export default function FormCustomer({ navigation }) {
             placeholder="Digite seu CPF"
             returnKeyType="next"
             ref={cpfRef}
+            value={cpf}
+            onChangeText={setCpf}
             onSubmitEditing={() => emailRef.current.focus()}
           />
           <FormInput
@@ -69,6 +96,8 @@ export default function FormCustomer({ navigation }) {
             autoCapitalize="none"
             placeholder="Digite seu e-mail"
             ref={emailRef}
+            value={email}
+            onChangeText={setEmail}
             returnKeyType="next"
             onSubmitEditing={() => passwordRef.current.focus()}
           />
@@ -77,11 +106,13 @@ export default function FormCustomer({ navigation }) {
             secureTextEntry
             placeholder="Digite sua senha"
             ref={passwordRef}
+            value={password}
+            onChangeText={setPassword}
             returnKeyType="send"
             onSubmitEditing={() => {}}
           />
 
-          <SubmitButton onPress={() => {}}>Salvar</SubmitButton>
+          <SubmitButton onPress={handleSubmit}>Salvar</SubmitButton>
         </Form>
         <Link onPress={() => navigation.navigate('SignIn')}>
           <LinkText>Voltar</LinkText>

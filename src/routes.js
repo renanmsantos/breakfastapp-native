@@ -18,63 +18,64 @@ import Orders from './pages/Orders';
 import Cart from './pages/Payment/Cart';
 import Payment from './pages/Payment/Payment';
 
-import FormCustomer from './pages/Forms/FormCustomer';
-import FormAddress from './pages/Forms/FormAddress';
+import FormCustomer from './pages/FormCustomer';
+import FormAddress from './pages/FormAddress';
 
-export default createAppContainer(
-  createSwitchNavigator(
-    {
-      Payment: createStackNavigator(
-        {
-          Cart: { screen: Cart },
-          Payment: { screen: Payment },
-        },
-        {
-          defaultNavigationOptions: {
-            headerTitleStyle: {
-              fontSize: 20,
-              fontWeight: 'bold',
-              alignSelf: 'center',
-              textAlign: 'center',
-            },
-            headerTransparent: true,
-            headerTintColor: '#fff',
-            headerLeftContainerStyle: {
-              paddingLeft: 30,
-            },
+export default (isSigned = false) =>
+  createAppContainer(
+    createSwitchNavigator(
+      {
+        Payment: createStackNavigator(
+          {
+            Cart: { screen: Cart },
+            Payment: { screen: Payment },
           },
-        }
-      ),
-      FormAddress: { screen: FormAddress },
-      ChooseAddress: { screen: ChooseAddress },
-      Rate: { screen: Rate },
-      Sign: createSwitchNavigator({
-        SignIn: { screen: SignIn },
-        FormCustomer: { screen: FormCustomer },
-      }),
-      App: createBottomTabNavigator(
-        {
-          Search: { screen: Search },
-          Orders: { screen: Orders },
-          Profile: { screen: Profile },
-        },
-        {
-          tabBarOptions: {
-            activeTintColor: '#FEC810',
-            inactiveTintColor: 'rgba(255,255,255,0.4)',
-            keyboardHidesTabBar: true,
-            style: {
-              backgroundColor: '#f73d25',
-              paddingBottom: 10,
-              paddingTop: 10,
-              height: 55,
+          {
+            defaultNavigationOptions: {
+              headerTitleStyle: {
+                fontSize: 20,
+                fontWeight: 'bold',
+                alignSelf: 'center',
+                textAlign: 'center',
+              },
+              headerTransparent: true,
+              headerTintColor: '#fff',
+              headerLeftContainerStyle: {
+                paddingLeft: 30,
+              },
             },
+          }
+        ),
+        FormAddress: { screen: FormAddress },
+        ChooseAddress: { screen: ChooseAddress },
+        Rate: { screen: Rate },
+        Sign: createSwitchNavigator({
+          SignIn: { screen: SignIn },
+          FormCustomer: { screen: FormCustomer },
+        }),
+        App: createBottomTabNavigator(
+          {
+            Search: { screen: Search },
+            Orders: { screen: Orders },
+            Profile: { screen: Profile },
           },
-        }
-      ),
-    },
-    {
-      initialRouteName: 'Sign',
-    }
-  )
-);
+          {
+            tabBarOptions: {
+              activeTintColor: '#FEC810',
+              inactiveTintColor: 'rgba(255,255,255,0.4)',
+              keyboardHidesTabBar: true,
+              style: {
+                backgroundColor: '#f73d25',
+                paddingBottom: 10,
+                paddingTop: 10,
+                height: 55,
+              },
+            },
+          }
+        ),
+      },
+      {
+        initialRouteName: isSigned ? 'App' : 'Sign',
+      }
+    )
+  );

@@ -1,16 +1,19 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
+import { useSelector, useDispatch } from 'react-redux';
 
 import Background from '~/components/Background';
 import Subtitle from '~/components/Subtitle';
 import Address from '~/components/Address';
+
+import { updateUserRequest } from '~/store/modules/user/actions';
 
 import {
   Container,
   Title,
   Form,
   FormInput,
-  SubmitButton,
   Separator,
   List,
   NewButton,
@@ -19,13 +22,36 @@ import {
 data = [1, 2, 3];
 
 export default function Profile({ navigation }) {
-  const sobrenomeRef = useRef();
+  const dispatch = useDispatch();
+  const profile = useSelector(state => state.user);
+
+  const lastnameRef = useRef();
   const emailRef = useRef();
   const cpfRef = useRef();
-  const celularRef = useRef();
+  const cellphoneRef = useRef();
   const oldPasswordRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
+
+  const [id] = useState(profile.id);
+  const [name, setName] = useState(profile.name);
+  const [cpf] = useState(profile.cpf);
+  const [email] = useState(profile.email);
+  const [lastName, setLastName] = useState(profile.lastName);
+  const [cellphone, setCellphone] = useState(profile.cellphone);
+  const [password, setPassword] = useState('');
+  const [oldPassword, setOldPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  useEffect(() => {
+    setOldPassword('');
+    setConfirmPassword('');
+    setPassword('');
+  }, [profile]);
+
+  function handleSubmit() {
+    dispatch(updateUserRequest(id, name, lastName, password, cellphone));
+  }
 
   return (
     <Background>
@@ -38,7 +64,9 @@ export default function Profile({ navigation }) {
             autoCapitalize="none"
             placeholder="Digite seu nome"
             returnKeyType="next"
-            onSubmitEditing={() => sobrenomeRef.current.focus()}
+            value={name}
+            onChangeText={setName}
+            onSubmitEditing={() => lastNameRef.current.focus()}
           />
           <FormInput
             icon="person-outline"
@@ -46,8 +74,10 @@ export default function Profile({ navigation }) {
             autoCapitalize="none"
             placeholder="Digite seu sobrenome"
             returnKeyType="next"
-            ref={sobrenomeRef}
-            onSubmitEditing={() => celularRef.current.focus()}
+            value={lastName}
+            onChangeText={setLastName}
+            ref={lastnameRef}
+            onSubmitEditing={() => cellphoneRef.current.focus()}
           />
           <FormInput
             icon="phone-android"
@@ -56,7 +86,9 @@ export default function Profile({ navigation }) {
             keyboardType="phone-pad"
             placeholder="Digite seu celular"
             returnKeyType="next"
-            ref={celularRef}
+            value={cellphone}
+            onChangeText={setCellphone}
+            ref={lastnameRef}
             onSubmitEditing={() => cpfRef.current.focus()}
           />
           <FormInput
@@ -67,6 +99,8 @@ export default function Profile({ navigation }) {
             placeholder="Digite seu CPF"
             returnKeyType="next"
             ref={cpfRef}
+            editable={false}
+            value={cpf}
             onSubmitEditing={() => emailRef.current.focus()}
           />
           <FormInput
@@ -76,6 +110,8 @@ export default function Profile({ navigation }) {
             autoCapitalize="none"
             placeholder="Digite seu e-mail"
             ref={emailRef}
+            editable={false}
+            value={email}
             returnKeyType="next"
             onSubmitEditing={() => oldPasswordRef.current.focus()}
           />
@@ -83,28 +119,31 @@ export default function Profile({ navigation }) {
           <FormInput
             icon="lock-outline"
             secureTextEntry
-            placeholder="Digita sua senha atual"
+            placeholder="Digite sua senha atual"
             ref={oldPasswordRef}
+            value={oldPassword}
+            onChangeText={setOldPassword}
             returnKeyType="send"
-            onSubmitEditing={() => {}}
           />
           <FormInput
             icon="lock-outline"
             secureTextEntry
-            placeholder="Digite sua nova"
+            placeholder="Digite sua nova senha"
             ref={passwordRef}
+            value={password}
+            onChangeText={setPassword}
             returnKeyType="send"
-            onSubmitEditing={() => {}}
           />
           <FormInput
             icon="lock-outline"
             secureTextEntry
             placeholder="Confirme sua senha"
             ref={confirmPasswordRef}
+            value={confirmPassword}
+            onChangeText={setConfirmPassword}
             returnKeyType="send"
-            onSubmitEditing={() => {}}
           />
-          <SubmitButton onPress={() => {}}>Salvar</SubmitButton>
+          <NewButton onPress={handleSubmit}>Atualizar</NewButton>
         </Form>
         <Subtitle>Endereços</Subtitle>
         <List
