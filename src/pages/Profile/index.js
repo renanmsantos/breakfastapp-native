@@ -87,7 +87,7 @@ export default function Profile({ navigation }) {
             returnKeyType="next"
             value={cellphone}
             onChangeText={setCellphone}
-            ref={lastnameRef}
+            ref={cellphoneRef}
             onSubmitEditing={() => cpfRef.current.focus()}
           />
           <FormInput
@@ -123,6 +123,7 @@ export default function Profile({ navigation }) {
             value={oldPassword}
             onChangeText={setOldPassword}
             returnKeyType="send"
+            onSubmitEditing={() => passwordRef.current.focus()}
           />
           <FormInput
             icon="lock-outline"
@@ -132,6 +133,7 @@ export default function Profile({ navigation }) {
             value={password}
             onChangeText={setPassword}
             returnKeyType="send"
+            onSubmitEditing={() => confirmPasswordRef.current.focus()}
           />
           <FormInput
             icon="lock-outline"

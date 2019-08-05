@@ -4,19 +4,17 @@ export function createUserRequest(
   email,
   password,
   cpf,
-  cellphone,
-  addresses
+  cellphone
 ) {
   return {
     type: '@user/CREATE_USER_REQUEST',
     payload: {
       name,
       lastName,
-      cpf,
-      cellphone,
       email,
       password,
-      addresses,
+      cpf,
+      cellphone,
     },
   };
 }
@@ -57,14 +55,7 @@ export function addAddressSuccess(addresses) {
   };
 }
 
-export function updateUserRequest(
-  id,
-  name,
-  lastName,
-  password,
-  cellphone,
-  addresses
-) {
+export function updateUserRequest(id, name, lastName, password, cellphone) {
   return {
     type: '@user/UPDATE_USER_REQUEST',
     payload: {
@@ -73,7 +64,6 @@ export function updateUserRequest(
       lastName,
       cellphone,
       password,
-      addresses,
     },
   };
 }

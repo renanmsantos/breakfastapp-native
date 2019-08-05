@@ -1,15 +1,13 @@
 import React from 'react';
 
-import Icon from 'react-native-vector-icons/MaterialIcons';
-
 import { Container, TotalText, TotalPriceText, Left } from './styles';
 
-export default function FooterCart() {
+export default function FooterCart({ value }) {
   return (
     <Container>
       <Left>
         <TotalText>Valor Total</TotalText>
-        <TotalPriceText>R$ 234,00</TotalPriceText>
+        <TotalPriceText>R$ {value}</TotalPriceText>
       </Left>
     </Container>
   );

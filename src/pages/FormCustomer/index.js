@@ -34,8 +34,9 @@ export default function FormCustomer({ navigation }) {
 
   function handleSubmit() {
     dispatch(
-      createUserRequest(name, lastName, cellphone, cpf, email, password)
+      createUserRequest(name, lastName, email, password, cpf, cellphone)
     );
+    navigation.navigate('SignIn');
   }
 
   return (

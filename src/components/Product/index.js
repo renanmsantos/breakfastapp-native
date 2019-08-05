@@ -1,25 +1,44 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { useDispatch } from 'react-redux';
 
 import { Container, Left, Image, Info, Name, Partner, Price } from './styles';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-export default function Product({ navigation }) {
+import { addProductCartRequest } from '~/store/modules/cart/actions';
+
+export default function Product({ navigation, product }) {
+  const dispatch = useDispatch();
+
+  function handleAddCart() {
+    const { id, name, price, partner, urlImage } = product;
+    const newProduct = {
+      id,
+      name,
+      urlImage,
+      price,
+      quantity: 1,
+      partner: partner.name,
+    };
+    dispatch(addProductCartRequest(newProduct));
+    navigation.navigate('Cart');
+  }
+
   return (
     <Container>
       <Left>
         <Image
           source={{
-            uri: 'https://api.adorable.io/avatars/50/' + Math.random() + '.png',
+            uri: product.urlImage,
           }}
         />
         <Info>
-          <Name>Produto 1</Name>
-          <Partner>Salgado da tia Ana</Partner>
-          <Price>R$ 23,50</Price>
+          <Name>{product.name}</Name>
+          <Partner>{product.partner.name}</Partner>
+          <Price>R$ {product.price}</Price>
         </Info>
       </Left>
-      <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
+      <TouchableOpacity onPress={handleAddCart}>
         <Icon name="add-shopping-cart" size={30} color="#000" />
       </TouchableOpacity>
     </Container>

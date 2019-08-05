@@ -16,10 +16,10 @@ export function* createUser({ payload }) {
     yield call(api.post, 'customers', {
       name,
       lastName,
-      cpf,
-      cellphone,
       email,
       password,
+      cpf,
+      cellphone,
     });
     Alert.alert('Sucesso!', 'Seu usuário foi cadastrado com sucesso.');
   } catch (err) {

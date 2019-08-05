@@ -37,6 +37,7 @@ export default function FormAddress({ navigation }) {
     dispatch(
       addAddressRequest(userId, cep, street, number, district, city, state)
     );
+    navigation.navigate('Profile');
   }
 
   return (

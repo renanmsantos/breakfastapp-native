@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Background from '~/components/Background';
@@ -7,17 +7,38 @@ import Product from '~/components/Product';
 import HeaderCart from '~/components/HeaderCart';
 import HeaderAddress from '~/components/HeaderAddress';
 
-import { useSelector } from 'react-redux';
+import api from '~/services/api';
 
 import { Container, Form, FormInput, List } from './styles';
 
-const data = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
 export default function Search({ navigation }) {
   const addresses = useSelector(state => state.user.addresses);
+
+  const [products, setProducts] = useState([]);
+  const [productsBackup, setProductsBackup] = useState([]);
+
   let address = [];
-  if (addresses.length > 0) {
+  if (addresses && addresses.length > 0) {
     address = addresses[0];
+  }
+
+  useEffect(() => {
+    async function loadProducts() {
+      const response = await api.get('products');
+      setProducts(response.data);
+      setProductsBackup(response.data);
+    }
+    loadProducts();
+  }, []);
+
+  function setSearchText(event) {
+    searchText = event.nativeEvent.text;
+    data = productsBackup;
+    searchText = searchText.trim().toLowerCase();
+    data = data.filter(item => {
+      return item.name.toLowerCase().match(searchText);
+    });
+    setProducts(data);
   }
 
   return (
@@ -28,16 +49,17 @@ export default function Search({ navigation }) {
         <Form>
           <FormInput
             icon="search"
+            onChange={setSearchText.bind(this)}
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="O que está procurando hoje?"
           />
         </Form>
         <List
-          data={data}
-          keyExtractor={item => String(item)}
+          data={products}
+          keyExtractor={item => String(item.id)}
           renderItem={({ item }) => (
-            <Product navigation={navigation} data={item} />
+            <Product navigation={navigation} product={item} />
           )}
         />
       </Container>

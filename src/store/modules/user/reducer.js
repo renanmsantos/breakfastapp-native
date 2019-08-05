@@ -28,7 +28,6 @@ export default function user(state = INITIAL_STATE, action) {
         draft.name = action.payload.user.name;
         draft.lastName = action.payload.user.lastName;
         draft.cellphone = action.payload.user.cellphone;
-        draft.addresses = action.payload.user.addresses;
       });
     case '@user/REMOVE_ADDRESS_SUCCESS':
       return produce(state, draft => {

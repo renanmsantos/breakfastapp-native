@@ -15,3 +15,11 @@ export const SubmitButton = styled(Button)`
 export const List = styled.FlatList.attrs({
   showsVerticalScrollIndicator: false,
 })``;
+
+export const EmptyCartText = styled.Text`
+  font-size: 20px;
+  color: #fff;
+  font-weight: bold;
+  align-self: center;
+  margin-top: 30px;
+`;

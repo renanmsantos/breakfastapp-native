@@ -20,8 +20,8 @@ export default function SignIn({ navigation }) {
   const dispatch = useDispatch();
   const passwordRef = useRef();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('admin');
+  const [password, setPassword] = useState('admin');
 
   function handleSubmit() {
     dispatch(signInRequest(email, password));

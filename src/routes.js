@@ -15,8 +15,8 @@ import Profile from './pages/Profile';
 import Search from './pages/Search';
 import Orders from './pages/Orders';
 
-import Cart from './pages/Payment/Cart';
-import Payment from './pages/Payment/Payment';
+import Cart from './pages/Cart';
+import Payment from './pages/Payment';
 
 import FormCustomer from './pages/FormCustomer';
 import FormAddress from './pages/FormAddress';
