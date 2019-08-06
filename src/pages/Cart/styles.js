@@ -19,7 +19,6 @@ export const List = styled.FlatList.attrs({
 export const EmptyCartText = styled.Text`
   font-size: 20px;
   color: #fff;
-  font-weight: bold;
   align-self: center;
   margin-top: 30px;
 `;

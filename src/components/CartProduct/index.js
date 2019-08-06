@@ -4,7 +4,13 @@ import { useDispatch } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-import { removeProductCartRequest } from '~/store/modules/cart/actions';
+import {
+  removeProductCartRequest,
+  plusQuantityProduct,
+  minusQuantityProduct,
+} from '~/store/modules/cart/actions';
+
+import { formatPrice } from '~/util/format';
 
 import {
   Container,
@@ -24,6 +30,14 @@ export default function CartProduct({ product }) {
     dispatch(removeProductCartRequest(product));
   }
 
+  function handlePlusQuantityProduct() {
+    dispatch(plusQuantityProduct(product));
+  }
+
+  function handleMinusQuantityProduct() {
+    dispatch(minusQuantityProduct(product));
+  }
+
   return (
     <Container>
       <Left>
@@ -35,17 +49,17 @@ export default function CartProduct({ product }) {
         <Info>
           <Name>{product.name}</Name>
           <Partner>{product.partner.name}</Partner>
-          <Price>R$ {product.price}</Price>
+          <Price>{formatPrice(product.price)}</Price>
         </Info>
       </Left>
       <TouchableOpacity onPress={handleRemoveProduct}>
         <Icon name="remove-shopping-cart" size={25} color="#FF5F49" />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => {}}>
+      <TouchableOpacity onPress={handleMinusQuantityProduct}>
         <Icon name="remove-circle-outline" size={20} color="#000" />
       </TouchableOpacity>
       <CounterText>{product.quantity}</CounterText>
-      <TouchableOpacity onPress={() => {}}>
+      <TouchableOpacity onPress={handlePlusQuantityProduct}>
         <Icon name="add-circle-outline" size={20} color="#000" />
       </TouchableOpacity>
     </Container>

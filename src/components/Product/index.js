@@ -7,6 +7,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import { addProductCartRequest } from '~/store/modules/cart/actions';
 
+import { formatPrice } from '~/util/format';
+
 export default function Product({ navigation, product }) {
   const dispatch = useDispatch();
 
@@ -35,7 +37,7 @@ export default function Product({ navigation, product }) {
         <Info>
           <Name>{product.name}</Name>
           <Partner>{product.partner.name}</Partner>
-          <Price>R$ {product.price}</Price>
+          <Price>{formatPrice(product.price)}</Price>
         </Info>
       </Left>
       <TouchableOpacity onPress={handleAddCart}>
