@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Background from '~/components/Background';
@@ -7,14 +7,15 @@ import Product from '~/components/Product';
 import HeaderCart from '~/components/HeaderCart';
 import HeaderAddress from '~/components/HeaderAddress';
 
-import api from '~/services/api';
+import { productRequest } from '~/store/modules/product/actions';
 
 import { Container, Form, FormInput, List } from './styles';
 
 export default function Search({ navigation }) {
+  const dispatch = useDispatch();
   const addresses = useSelector(state => state.user.addresses);
+  const products = useSelector(state => state.product.products);
 
-  const [products, setProducts] = useState([]);
   const [productsBackup, setProductsBackup] = useState([]);
 
   let address = [];
@@ -24,9 +25,8 @@ export default function Search({ navigation }) {
 
   useEffect(() => {
     async function loadProducts() {
-      const response = await api.get('products');
-      setProducts(response.data);
-      setProductsBackup(response.data);
+      dispatch(productRequest());
+      setProductsBackup(products);
     }
     loadProducts();
   }, []);
@@ -45,7 +45,11 @@ export default function Search({ navigation }) {
     <Background>
       <Container>
         <HeaderCart navigation={navigation} />
-        <HeaderAddress navigation={navigation} address={address} />
+        <HeaderAddress
+          navigation={navigation}
+          address={address}
+          isChangeable={true}
+        />
         <Form>
           <FormInput
             icon="search"

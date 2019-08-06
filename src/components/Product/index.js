@@ -41,7 +41,7 @@ export default function Product({ navigation, product }) {
         </Info>
       </Left>
       <TouchableOpacity onPress={handleAddCart}>
-        <Icon name="add-shopping-cart" size={30} color="#000" />
+        <Icon name="add-shopping-cart" size={40} color="#000" />
       </TouchableOpacity>
     </Container>
   );
