@@ -2,11 +2,21 @@ import produce from 'immer';
 
 const INITIAL_STATE = {
   products: [],
-  totalPrice: null,
+  totalPrice: 0,
 };
 
 export default function cart(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case '@auth/SIGN_OUT':
+      return produce(state, draft => {
+        draft.products = [];
+        draft.totalPrice = 0;
+      });
+    case '@auth/SIGN_OUT':
+      return produce(state, draft => {
+        draft.products = [];
+        draft.totalPrice = 0;
+      });
     case '@cart/ADD_PRODUCT_CART_REQUEST':
       return produce(state, draft => {
         draft.products.push(action.payload.product);
@@ -17,7 +27,7 @@ export default function cart(state = INITIAL_STATE, action) {
         draft.products = draft.products.filter(function(item) {
           return item.name != action.payload.product.name;
         });
-        draft.totalPrice = draft.totalPrice - action.payload.product.price;
+        draft.totalPrice = 0;
         if (draft.totalPrice < 0) draft.totalPrice = 0;
       });
     case '@cart/PLUS_QTY_PRODUCT_REQUEST':

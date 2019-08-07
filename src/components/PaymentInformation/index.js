@@ -2,7 +2,9 @@ import React from 'react';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { Container, TitleText, Title, Text, Form } from './styles';
+import { Container, TitleText, Title, List, Form } from './styles';
+
+import ItemProduct from '~/components/ItemProduct';
 
 export default function PaymentInformation({ products }) {
   return (
@@ -12,7 +14,11 @@ export default function PaymentInformation({ products }) {
         <TitleText>Informações do pedido</TitleText>
       </Title>
       <Form>
-        <Text>{products[0].name}</Text>
+        <List
+          data={products}
+          keyExtractor={item => String(item.id)}
+          renderItem={({ item }) => <ItemProduct product={item} />}
+        />
       </Form>
     </Container>
   );

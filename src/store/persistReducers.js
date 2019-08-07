@@ -6,7 +6,7 @@ export default reducers => {
     {
       key: 'breakfastapp',
       storage,
-      whitelist: ['auth', 'user', 'cart', 'product'],
+      whitelist: ['auth', 'user', 'cart', 'product', 'order'],
     },
     reducers
   );

@@ -21,6 +21,7 @@ export default function Product({ navigation, product }) {
       price,
       quantity: 1,
       partner: partner.name,
+      partnerId: partner.id,
     };
     dispatch(addProductCartRequest(newProduct));
     navigation.navigate('Cart');
