@@ -42,6 +42,7 @@ export default function cart(state = INITIAL_STATE, action) {
               price: item.price,
               quantity: item.quantity + 1,
               partner: item.partner,
+              partnerId: item.partnerId,
             };
           } else {
             return item;
@@ -61,12 +62,18 @@ export default function cart(state = INITIAL_STATE, action) {
               price: item.price,
               quantity: item.quantity - 1,
               partner: item.partner,
+              partnerId: item.partnerId,
             };
           } else {
             return item;
           }
         });
         if (draft.totalPrice < 0) draft.totalPrice = 0;
+      });
+    case '@order/NEW_ORDER_REQUEST_SUCCESS':
+      return produce(state, draft => {
+        draft.totalPrice = 0;
+        draft.products = [];
       });
     default:
       return state;

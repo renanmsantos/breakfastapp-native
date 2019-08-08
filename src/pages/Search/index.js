@@ -14,9 +14,10 @@ import { Container, Form, FormInput, List } from './styles';
 export default function Search({ navigation }) {
   const dispatch = useDispatch();
   const addresses = useSelector(state => state.user.addresses);
-  const products = useSelector(state => state.product.products);
+  const productsState = useSelector(state => state.product.products);
 
   const [productsBackup, setProductsBackup] = useState([]);
+  const [products, setProducts] = useState(productsState);
 
   let address = [];
   if (addresses && addresses.length > 0) {

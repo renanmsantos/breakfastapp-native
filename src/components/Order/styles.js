@@ -34,9 +34,10 @@ export const Description = styled.Text`
 `;
 
 export const Status = styled.Text`
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   color: #333;
+  text-transform: uppercase;
 `;
 
 export const Price = styled.Text`

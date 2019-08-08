@@ -10,8 +10,6 @@ export default function product(state = INITIAL_STATE, action) {
       return produce(state, draft => {
         draft.products = action.payload.products;
       });
-    case '@product/DISABLE_PRODUCT_REQUEST':
-      return state;
     default:
       return state;
   }

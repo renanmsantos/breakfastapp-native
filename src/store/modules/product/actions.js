@@ -10,10 +10,3 @@ export function productRequestSuccess(products) {
     payload: { products },
   };
 }
-
-export function disableProductRequest(product) {
-  return {
-    type: '@product/DISABLE_PRODUCT_REQUEST',
-    payload: { product },
-  };
-}

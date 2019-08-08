@@ -11,7 +11,7 @@ import TotalInformation from '~/components/TotalInformation';
 
 import { Container, SubmitButton } from './styles';
 
-import { newOrderRequest } from '~/store/modules/order/actions';
+import { newOrderRequest, orderRequest } from '~/store/modules/order/actions';
 
 export default function Payment({ navigation }) {
   const dispatch = useDispatch();
@@ -21,7 +21,8 @@ export default function Payment({ navigation }) {
   const user = useSelector(state => state.user);
 
   function handleSubmit() {
-    dispatch(newOrderRequest(user, products));
+    dispatch(newOrderRequest(user, products, totalPrice));
+    dispatch(orderRequest(user.id));
     navigation.navigate('Orders');
   }
 

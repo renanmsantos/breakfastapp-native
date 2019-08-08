@@ -5,30 +5,24 @@ import {
   Left,
   Info,
   OrderId,
-  Description,
   Status,
   Price,
-  Test,
+  Description,
 } from './styles';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
-export default function Order({ navigation }) {
+import { formatPrice } from '~/util/format';
+
+export default function Order({ order }) {
   return (
     <Container>
       <Left>
         <Info>
-          <OrderId>PEDIDO #12313</OrderId>
-          <Description>Summary description</Description>
-          <Status>Em andamento</Status>
-          <Price>R$ 23,50</Price>
+          <OrderId>PEDIDO #{order.id}</OrderId>
+          <Price>Total: {formatPrice(order.totalPrice)}</Price>
+          <Description>Data do pedido: {order.createdAt}</Description>
         </Info>
       </Left>
-      <TouchableOpacity onPress={() => navigation.navigate('Rate')}>
-        <Test>Avaliar</Test>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Order')}>
-        <Test>Cancelar</Test>
-      </TouchableOpacity>
+      <Status>{order.purchaseOrderStatus}</Status>
     </Container>
   );
 }

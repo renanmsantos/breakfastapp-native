@@ -1,62 +1,55 @@
-import { all, put, takeLatest, call } from 'redux-saga/effects';
+import { all, takeLatest, call, put } from 'redux-saga/effects';
 
 import { Alert } from 'react-native';
 
 import api from '~/services/api';
 
-import { newOrderRequestSuccess } from './actions';
+import {
+  newOrderRequestSuccess,
+  orderRequestSuccess,
+} from '~/store/modules/order/actions';
 
 export function* newOrderRequest({ payload }) {
   try {
-    const { user, products } = payload;
+    const { user, products, totalPrice } = payload;
     const customerId = user.id;
+    console.tron.log(products[0]);
     const partnerId = products[0].partnerId;
     const addressId = user.addresses[0].id;
 
-    yield call(api.post, 'orders', {
-      customerId,
-      partnerId,
-      addressId,
-    });
-  } catch (err) {}
-}
-
-export function* newOrderProductRequest({ payload }) {
-  try {
-    const { products } = payload;
-
-    listProducts = [];
+    toSendProducts = [];
     products.map(product => {
-      listProducts.push({
+      toSendProducts.push({
         productId: product.id,
         quantity: product.quantity,
       });
     });
 
-    const returnedProducts = yield call(
-      api.post,
-      'orders/' + orderId + '/products',
-      {
-        listProducts,
-      }
-    );
-
-    const order = {
-      products: returnedProducts.data,
-    };
-
-    Alert.alert('Sucesso!', 'Seu pedido foi cadastrado com sucesso.');
-
-    yield put(newOrderRequestSuccess(order));
+    yield call(api.post, 'orders', {
+      customerId,
+      partnerId,
+      addressId,
+      totalPrice,
+      products: toSendProducts,
+    });
+    Alert.alert('Sucesso!', 'Pedido feito com sucesso.');
+    yield put(newOrderRequestSuccess());
   } catch (err) {
-    Alert.alert(
-      'Falha no cadastro',
-      'Houve um erro na realização de um pedido.'
-    );
+    Alert.alert('Falha!', 'Houve uma falha na realização de um pedido.');
+  }
+}
+
+export function* orderRequest({ payload }) {
+  const { userId } = payload;
+  try {
+    const response = yield call(api.get, 'orders/customers/' + userId);
+    yield put(orderRequestSuccess(response.data));
+  } catch (err) {
+    //Alert.alert('Falha!', 'Falha ao buscar os produtos.');
   }
 }
 
 export default all([
-  takeLatest('@order/ORDER_REQUEST', newOrderRequest),
-  takeLatest('@order/ORDER_REQUEST', newOrderProductRequest),
+  takeLatest('@order/NEW_ORDER_REQUEST', newOrderRequest),
+  takeLatest('@order/ORDER_REQUEST', orderRequest),
 ]);
