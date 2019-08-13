@@ -7,13 +7,14 @@ import api from '~/services/api';
 import {
   newOrderRequestSuccess,
   orderRequestSuccess,
+  orderInfoRequestSuccess,
 } from '~/store/modules/order/actions';
 
 export function* newOrderRequest({ payload }) {
   try {
+    console.tron.log(payload);
     const { user, products, totalPrice } = payload;
     const customerId = user.id;
-    console.tron.log(products[0]);
     const partnerId = products[0].partnerId;
     const addressId = user.addresses[0].id;
 
@@ -25,7 +26,7 @@ export function* newOrderRequest({ payload }) {
       });
     });
 
-    yield call(api.post, 'orders', {
+    const response = yield call(api.post, 'orders', {
       customerId,
       partnerId,
       addressId,
@@ -33,7 +34,7 @@ export function* newOrderRequest({ payload }) {
       products: toSendProducts,
     });
     Alert.alert('Sucesso!', 'Pedido feito com sucesso.');
-    yield put(newOrderRequestSuccess());
+    yield put(newOrderRequestSuccess(response.data));
   } catch (err) {
     Alert.alert('Falha!', 'Houve uma falha na realização de um pedido.');
   }
@@ -49,7 +50,17 @@ export function* orderRequest({ payload }) {
   }
 }
 
+export function* orderInfoRequest({ payload }) {
+  try {
+    const response = yield call(api.get, 'orders/' + payload.order.id);
+    yield put(orderInfoRequestSuccess(response.data));
+  } catch (err) {
+    //Alert.alert('Falha!', 'Falha ao buscar os produtos.');
+  }
+}
+
 export default all([
   takeLatest('@order/NEW_ORDER_REQUEST', newOrderRequest),
   takeLatest('@order/ORDER_REQUEST', orderRequest),
+  takeLatest('@order/ORDER_INFO_REQUEST', orderInfoRequest),
 ]);

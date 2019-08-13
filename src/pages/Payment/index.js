@@ -22,7 +22,7 @@ export default function Payment({ navigation }) {
 
   function handleSubmit() {
     dispatch(newOrderRequest(user, products, totalPrice));
-    dispatch(orderRequest(user.id));
+    dispatch(orderRequest());
     navigation.navigate('Orders');
   }
 

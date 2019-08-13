@@ -17,6 +17,8 @@ import Orders from './pages/Orders';
 
 import Cart from './pages/Cart';
 import Payment from './pages/Payment';
+import ProductDetails from './pages/ProductDetails';
+import OrderDetails from './pages/OrderDetails';
 
 import FormCustomer from './pages/FormCustomer';
 import FormAddress from './pages/FormAddress';
@@ -29,6 +31,8 @@ export default (isSigned = false) =>
           {
             Cart: { screen: Cart },
             Payment: { screen: Payment },
+            ProductDetails: { screen: ProductDetails },
+            OrderDetails: { screen: OrderDetails },
           },
           {
             defaultNavigationOptions: {

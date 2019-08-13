@@ -12,11 +12,6 @@ export default function cart(state = INITIAL_STATE, action) {
         draft.products = [];
         draft.totalPrice = 0;
       });
-    case '@auth/SIGN_OUT':
-      return produce(state, draft => {
-        draft.products = [];
-        draft.totalPrice = 0;
-      });
     case '@cart/ADD_PRODUCT_CART_REQUEST':
       return produce(state, draft => {
         draft.products.push(action.payload.product);
@@ -72,8 +67,8 @@ export default function cart(state = INITIAL_STATE, action) {
       });
     case '@order/NEW_ORDER_REQUEST_SUCCESS':
       return produce(state, draft => {
-        draft.totalPrice = 0;
         draft.products = [];
+        draft.totalPrice = 0;
       });
     default:
       return state;

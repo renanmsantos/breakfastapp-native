@@ -19,8 +19,23 @@ export function newOrderRequest(user, products, totalPrice) {
   };
 }
 
-export function newOrderRequestSuccess() {
+export function newOrderRequestSuccess(orders) {
   return {
     type: '@order/NEW_ORDER_REQUEST_SUCCESS',
+    payload: { orders },
+  };
+}
+
+export function orderInfoRequest(order) {
+  return {
+    type: '@order/ORDER_INFO_REQUEST',
+    payload: { order },
+  };
+}
+
+export function orderInfoRequestSuccess(order) {
+  return {
+    type: '@order/ORDER_INFO_REQUEST_SUCCESS',
+    payload: { order },
   };
 }

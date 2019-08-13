@@ -8,6 +8,8 @@ export default function AddressInformation({ addresses }) {
   let address = [];
   if (addresses && addresses.length > 0) {
     address = addresses[0];
+  } else {
+    address = addresses;
   }
   return (
     <Container>

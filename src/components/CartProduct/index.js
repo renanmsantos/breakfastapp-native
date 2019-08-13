@@ -48,7 +48,7 @@ export default function CartProduct({ product }) {
         />
         <Info>
           <Name>{product.name}</Name>
-          <Partner>{product.partner.name}</Partner>
+          <Partner>{product.partner}</Partner>
           <Price>{formatPrice(product.price)}</Price>
         </Info>
       </Left>

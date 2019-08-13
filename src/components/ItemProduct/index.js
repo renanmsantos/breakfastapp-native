@@ -18,7 +18,7 @@ export default function ItemProduct({ product }) {
       <Left>
         <Info>
           <Name>{product.name}</Name>
-          <Partner>{product.partner}</Partner>
+          <Partner>{product.partner.name}</Partner>
           <Price>
             {formatPrice(product.price)} x {product.quantity}
           </Price>

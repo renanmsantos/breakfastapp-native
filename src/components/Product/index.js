@@ -6,6 +6,7 @@ import { Container, Left, Image, Info, Name, Partner, Price } from './styles';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import { addProductCartRequest } from '~/store/modules/cart/actions';
+import { productInfoRequest } from '~/store/modules/product/actions';
 
 import { formatPrice } from '~/util/format';
 
@@ -27,20 +28,27 @@ export default function Product({ navigation, product }) {
     navigation.navigate('Cart');
   }
 
+  function handleProductDetails() {
+    dispatch(productInfoRequest(product));
+    navigation.navigate('ProductDetails');
+  }
+
   return (
     <Container>
-      <Left>
-        <Image
-          source={{
-            uri: product.urlImage,
-          }}
-        />
-        <Info>
-          <Name>{product.name}</Name>
-          <Partner>{product.partner.name}</Partner>
-          <Price>{formatPrice(product.price)}</Price>
-        </Info>
-      </Left>
+      <TouchableOpacity onPress={handleProductDetails}>
+        <Left>
+          <Image
+            source={{
+              uri: product.urlImage,
+            }}
+          />
+          <Info>
+            <Name>{product.name}</Name>
+            <Partner>{product.partner.name}</Partner>
+            <Price>{formatPrice(product.price)}</Price>
+          </Info>
+        </Left>
+      </TouchableOpacity>
       <TouchableOpacity onPress={handleAddCart}>
         <Icon name="add-shopping-cart" size={40} color="#000" />
       </TouchableOpacity>
